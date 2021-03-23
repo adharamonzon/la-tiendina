@@ -1,0 +1,31 @@
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+.header-title {
+  font-size: 50px;
+  text-align: center;
+  margin-top: 40px;
+}
+.header-basket {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  cursor: pointer;
+}
+.icon {
+  width: 100%;
+}
+.number {
+  background: red;
+  text-align: center;
+  width: 16px;
+  border-radius: 50%;
+  font-size: 12px;
+  border: solid black 1px;
+  padding: 2px;
+  position: absolute;
+  bottom: -8px;
+  right: 2px;
+}
