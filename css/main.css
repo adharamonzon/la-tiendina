@@ -6,6 +6,9 @@
   text-align: center;
   margin-top: 40px;
 }
+.header-subtitle {
+  text-align: center;
+}
 .header-basket {
   width: 50px;
   height: 50px;
@@ -28,4 +31,8 @@
   position: absolute;
   bottom: -8px;
   right: 2px;
+}
+.carousel-inner {
+  height: 70vh !important;
+  background: no-repeat center;
 }
