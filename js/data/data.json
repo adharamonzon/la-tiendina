@@ -1,0 +1,36 @@
+[
+  {
+    "id": "v1",
+    "family": "verduras",
+    "name": "Pimiento Rojo",
+    "price": 1.99,
+    "url": "https://specialtyproduce.com/sppics/802.png"
+  },
+  {
+    "id": "v2",
+    "family": "verduras",
+    "name": "Pimiento Verde Italiano",
+    "price": 1.29,
+    "url": "https://solidstarts.com/wp-content/uploads/Bell-Pepper_edited-scaled.jpg"
+  },
+  {
+    "id": "v3",
+    "family": "verduras",
+    "name": "Espinacas frescas",
+    "price": 2.25,
+    "url": "https://cdn.mos.cms.futurecdn.net/atyrpYQoxdoTzmEgu8HMWE.jpg"
+  },
+  {
+    "id": "v4",
+    "family": "verduras",
+    "name": "Brocoli",
+    "price":1.12,
+    "url": "https://okdiario.com/img/recetas/2016/09/06/brocoli.jpg"  },
+  {
+    "id": "v5",
+    "family": "verduras",
+    "name": "Coliflor",
+    "price":1.12,
+    "url": "https://www.rebanando.com/media/coliflor_crop.jpg/rh/coliflor-esparragada.jpg"
+  }
+]

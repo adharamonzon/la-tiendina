@@ -36,3 +36,7 @@
   height: 70vh !important;
   background: no-repeat center;
 }
+.vegetables-list {
+  display: grid;
+  grid-template-columns: repeat(5 1fr);
+}
