@@ -46,8 +46,9 @@
 }
 .vegetables-item {
   padding: 5px;
-  width: 150px;
-  height: 155px;
+  margin-top: 5px;
+  width: 190px;
+  height: 175px;
   align-content: center;
   cursor: pointer;
 }
@@ -59,13 +60,19 @@
   width: 140px;
 }
 .vegetables-img {
-  width: 115px;
-  height: 80px;
+  width: 160px;
+  height: 120px;
 }
 .vegetables-title {
   font-size: 14px;
   margin-top: 10px;
 }
 .vegetables-price {
-  font-size: 8px;
+  font-size: 12px;
+}
+.modal {
+  display: none;
+}
+.show {
+  display: block;
 }

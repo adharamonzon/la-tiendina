@@ -39,7 +39,7 @@
     "family": "verduras",
     "name": "Judias Verdes",
     "price":1.45,
-    "url": "https://okdiario.com/img/recetas/2016/09/06/brocoli.jpg"  
+    "url": "https://okdiario.com/img/recetas/2016/11/14/judias-verdes-2.jpg"  
   },
   {
     "id": "v7",
@@ -54,5 +54,41 @@
     "name": "Acelgas",
     "price":1.85,
     "url": "https://okdiario.com/img/recetas/2016/10/26/acelgas.jpg"
+  },
+  {
+    "id": "f1",
+    "family": "frutas",
+    "name": "Manzana Golden",
+    "price":1.59,
+    "url": "https://huertadecarabana.es/wp-content/uploads/2020/03/manzana-golden.jpg"
+  },
+  {
+    "id": "f2",
+    "family": "frutas",
+    "name": "Pera Conferencia",
+    "price":1.69,
+    "url": "https://www.lafruteria.es/2591-large_default/pera-conferencia-1.jpg"
+  }
+  ,
+  {
+    "id": "f3",
+    "family": "frutas",
+    "name": "Naranjas de zumo",
+    "price":4.95,
+    "url": "https://haycosasmuynuestras.com/wp-content/uploads/2015/12/naranjas-enteras-y-en-porciones-con-c%C3%A1scara.jpg"
+  },
+  {
+    "id": "f4",
+    "family": "frutas",
+    "name": "Mandarinas",
+    "price":2.34,
+    "url": "https://img.freepik.com/foto-gratis/mandarinas-aisladas-mitad-mandarina-pelada-mandarina-entera-o-fruta-naranja-hojas-verdes-aisladas-sobre-fondo-blanco-cerca_95544-250.jpg?size=626&ext=jpg"
+  },
+  {
+    "id": "f5",
+    "family": "frutas",
+    "name": "Aguacate",
+    "price":4.00,
+    "url": "https://i2.wp.com/frutasloscursos.com/wp-content/uploads/fruta_aguacate.jpg?fit=900%2C595&ssl=1"
   }
 ]
