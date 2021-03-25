@@ -16,49 +16,56 @@ const paintGroceries = () => {
  let listCode = ''; 
  for (vegetable of vegetables) {
    if (vegetable.family === "verduras"){
-   listCode += `<li id=${vegetable.id} data-id=${vegetable.id} class="vegetables-item js-list-item">`;
+   listCode += `<li id=${vegetable.id} data-bs-toggle="modal" data-bs-target="#exampleModal" data-id=${vegetable.id} class="vegetables-item">`;
    listCode += '<div class="image-content">'
    listCode += `<img class="vegetables-img" src=${vegetable.url} />`;
    listCode += '</div>'
-   listCode += `<h6 class="vegetables-title">${vegetable.name}</h6>`;
+   listCode += `<h6 class="vegetables-name">${vegetable.name}</h6>`;
    listCode += `<p class="vegetables-price">${vegetable.price}€ /Kg </p>`;
    listCode += `</li>`;
  } else if (vegetable.family === "frutas"){
-  listCode += `<li id=${vegetable.id} data-id=${vegetable.id} class="vegetables-item js-list-item">`;
+  listCode += `<li data-bs-toggle="modal" data-bs-target="#exampleModal" id=${vegetable.id} data-id=${vegetable.id} class="vegetables-item">`;
   listCode += '<div class="image-content">'
   listCode += `<img class="vegetables-img" src=${vegetable.url} />`;
   listCode += '</div>'
-  listCode += `<h6 class="vegetables-title">${vegetable.name}</h6>`;
-  listCode += `<p class="vegetables-price">${vegetable.price}€ /Kg </p>`;
+  listCode += `<h6 class="vegetables-name">${vegetable.name}</h6>`;
+  listCode += `<p class="vegetables-price">${vegetable.price}€ /Kg </p>vegetables-item`;;
   listCode += `</li>`;
  }
 }
 vegetablesList.innerHTML = listCode;
+showModal();
+
 }
-
-
 //ventana modal de cada elemento
-//no funciona (no pilla cada item)
- const showModal = (id) => {
-  console.log(id);
-  let modalItem = vegetables.find((vegetable) => {
-    return vegetable.id === id
-  })
-  console.log(modalItem);
+const modalWindow = document.querySelector('.modal-content')
+const showModal = (ev) => {
+  const modalTriger = document.querySelectorAll('.vegetables-item');
+  let modalCard = '';
+  const handelModal = (ev) => {
+    const product = ev.currentTarget.id
+    for (const item of vegetables) {
+      if (product === item.id){
+        modalCard += `<div class="modal-header">`;
+        modalCard += ` <h5 class="modal-title" id="exampleModalLabel">${item.name}</h5>`;
+        modalCard += `<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>`;
+        modalCard += `</div>`;
+        modalCard += `<div modal-body> `;
+        modalCard += `<img src=${item.url} alt="Fodo de ${item.name}"`
+        modalCard += '</div>';
+        modalCard += '<div class="modal-footer">'
+        modalCard += '<button type="button" class="btn btn-secondary">+</button>;'
+        modalCard += `<p>0<p>`;
+        modalCard += '<button type="button" class="btn btn-secondary">-</button>'
+        modalCard += `</div>`;
+        modalCard += `</div>`;
+      }
+    }
+    modalWindow.innerHTML = modalCard;
+  }
+  modalTriger.forEach((item) => item.addEventListener('click', handelModal))
 }
 
-const trigerModal = () => {
-  let modalItem = document.querySelectorAll('.js-list-item');
-  console.log(modalItem);
-  modalItem.forEach((item) => {
-   item.addEventListener('click', () => {
-     console.log(item);
-   let id = item.attributes['data-id'].value;
-   console.log(id);
-   showModal(id)
-    })
-  })
- }
 
+///ejecución de eventos
 getData();
-trigerModal();
