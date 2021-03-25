@@ -39,12 +39,13 @@ showModal();
 }
 //ventana modal de cada elemento
 const modalWindow = document.querySelector('.modal-content')
-const showModal = (ev) => {
+const showModal = () => {
   const modalTriger = document.querySelectorAll('.vegetables-item');
-  let modalCard = '';
   const handelModal = (ev) => {
+    modalCard = '';
     const product = ev.currentTarget.id
     for (const item of vegetables) {
+    
       if (product === item.id){
         modalCard += `<div class="modal-header">`;
         modalCard += ` <h5 class="modal-title" id="exampleModalLabel">${item.name}</h5>`;
