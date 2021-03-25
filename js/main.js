@@ -48,16 +48,16 @@ const showModal = () => {
     
       if (product === item.id){
         modalCard += `<div class="modal-header">`;
-        modalCard += ` <h5 class="modal-title" id="exampleModalLabel">${item.name}</h5>`;
+        modalCard += `<h5 class="modal-title" id="exampleModalLabel">${item.name}</h5>`;
         modalCard += `<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>`;
         modalCard += `</div>`;
         modalCard += `<div modal-body> `;
-        modalCard += `<img src=${item.url} alt="Fodo de ${item.name}"`
+        modalCard += `<img class="modal-img" src=${item.url} alt="Fodo de ${item.name}"`
         modalCard += '</div>';
         modalCard += '<div class="modal-footer">'
-        modalCard += '<button type="button" class="btn btn-secondary">+</button>;'
+        modalCard += `<button type="button" class="btn btn-light">-</button>`
         modalCard += `<p>0<p>`;
-        modalCard += '<button type="button" class="btn btn-secondary">-</button>'
+        modalCard += '<button type="button" class="btn btn-light">+</button>'
         modalCard += `</div>`;
         modalCard += `</div>`;
       }

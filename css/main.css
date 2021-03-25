@@ -77,11 +77,22 @@
 .vegetables-price {
   font-size: 12px;
 }
-.modal {
-  display: none;
+.modal-content {
+  width: 80%;
 }
-.show {
-  display: block;
+.modal-title {
+  font-size: 24px;
 }
-.infoWindow {
+.modal-body {
+  align-self: center;
+}
+.modal-img {
+  height: 200px;
+  width: auto;
+}
+.minus-icon {
+  width: 10px;
+}
+.modal-footer {
+  justify-content: flex-start;
 }
