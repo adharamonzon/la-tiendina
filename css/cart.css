@@ -1,6 +1,7 @@
 * {
   font-family: 'Montserrat', sans-serif;
 }
+/* ESTILOS HEADER */
 .header-title {
   font-size: 50px;
   text-align: center;
@@ -22,7 +23,7 @@
   height: 50px;
   position: absolute;
   top: 40px;
-  left: 40px;
+  left: 60px;
   cursor: pointer;
 }
 .icon {
@@ -39,4 +40,34 @@
   position: absolute;
   bottom: 32px;
   right: -3px;
+}
+/* ESTILOS PARA LA LISTA DE LA COMPRA */
+.list {
+  margin-left: 25%;
+  margin-top: 55px;
+  width: 700px;
+}
+.list-item {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+}
+.product-name {
+  margin-top: 4%;
+}
+.product-price {
+  margin-top: 5%;
+}
+.product-quantity {
+  margin-top: 5%;
+}
+.img-container {
+  width: 85px;
+  height: auto;
+}
+.img {
+  width: 100%;
+}
+.btns-container {
+  margin-top: 4%;
 }

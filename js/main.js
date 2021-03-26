@@ -11,7 +11,7 @@ const getData = () => {
 }
 
 const vegetablesList = document.querySelector('.js-vegetables')
-//pintamos en pantalla los elementos disponibles
+//pintamos en pantalla los productos disponibles
 const paintGroceries = () => {
  let listCode = ''; 
  for (vegetable of vegetables) {
@@ -29,7 +29,7 @@ const paintGroceries = () => {
   listCode += `<img class="vegetables-img" src=${vegetable.url} />`;
   listCode += '</div>'
   listCode += `<h6 class="vegetables-name">${vegetable.name}</h6>`;
-  listCode += `<p class="vegetables-price">${vegetable.price}€ /Kg </p>vegetables-item`;;
+  listCode += `<p class="vegetables-price">${vegetable.price}€ /Kg </p>`;;
   listCode += `</li>`;
  }
 }
@@ -37,7 +37,7 @@ vegetablesList.innerHTML = listCode;
 showModal();
 
 }
-//ventana modal de cada elemento
+//ventana modal de cada producto
 const modalWindow = document.querySelector('.modal-content')
 const showModal = () => {
   const modalTriger = document.querySelectorAll('.vegetables-item');
