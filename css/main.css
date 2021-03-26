@@ -1,6 +1,7 @@
 * {
   font-family: 'Montserrat', sans-serif;
 }
+/* ESTILOS DEL HEADER */
 .header-title {
   font-size: 50px;
   text-align: center;
@@ -32,12 +33,14 @@
   bottom: 32px;
   right: -3px;
 }
-.section-title {
-  margin: 20px;
-}
 .carousel-inner {
   height: 70vh !important;
   background: no-repeat center;
+}
+
+/* ESTILOS DE LA SECCIÓN DE PRODUCTOS (LISTADO) */
+.section-title {
+  margin: 20px;
 }
 .vegetables-list {
   list-style: none;
@@ -77,6 +80,7 @@
 .vegetables-price {
   font-size: 12px;
 }
+/* ESTILOS DE LA VENTANA MODAL */
 .modal-content {
   width: 80%;
 }
@@ -90,9 +94,9 @@
   height: 200px;
   width: auto;
 }
-.minus-icon {
-  width: 10px;
-}
 .modal-footer {
   justify-content: flex-start;
+}
+.cart-icon {
+  width: 12px;
 }
