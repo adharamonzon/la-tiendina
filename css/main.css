@@ -22,7 +22,7 @@
   width: 100%;
 }
 .number {
-  background: red;
+  display: none;
   text-align: center;
   width: 16px;
   border-radius: 50%;
@@ -32,6 +32,8 @@
   position: absolute;
   bottom: 32px;
   right: -3px;
+  font-weight: bold;
+  background-color: white;
 }
 .carousel-inner {
   height: 70vh !important;
@@ -99,4 +101,8 @@
 }
 .cart-icon {
   width: 12px;
+}
+/* Estilo genéricos */
+.show {
+  display: block;
 }

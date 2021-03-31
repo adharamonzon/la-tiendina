@@ -70,9 +70,8 @@ const showModal = () => {
   }
   modalTriger.forEach((item) => item.addEventListener('click', handelModal));
   }
+
 //Añadir al carrito
-
-
 const handleAddProduct = () => {
   const addBtn = document.querySelector('.plusBtn');
   const addProduct = () => {
@@ -84,6 +83,7 @@ const handleAddProduct = () => {
       }
       
     }
+    paintCartNumber();
   }
   addBtn.addEventListener('click', addProduct);
   
@@ -103,7 +103,13 @@ const handleRestProduct = () => {
  minusBtn.addEventListener('click', restProduct);
   
 }
-
+//Pintar el número del carrito
+const paintCartNumber = () => {
+  const cart = document.querySelector('.js-cart-number');
+  console.log(cart);
+  cart.classList.add('show');
+  cart.innerHTML = cartProducts.length;  
+}
 /*
 const handleAddProduct = (ev) => {
   console.log('me han clickado')
