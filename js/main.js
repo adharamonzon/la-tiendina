@@ -58,15 +58,15 @@ const showModal = () => {
         modalCard += '</div>';
         modalCard += '<div class="modal-footer">'
         modalCard += `<button type="button" class="btn btn-outline-secondary minusBtn" id=${item.id}><img class="cart-icon" src="../css/icons/menos.svg" alt="Quitar uno de la lista"/></button>`
-        modalCard += `<p>0<p>`;
+        modalCard += `<p class="js-modal-number">0<p>`;
         modalCard += `<button type="button" class="btn btn-outline-secondary plusBtn" id=${item.id}><img class="cart-icon" src="../css/icons/mas.svg" alt="Añadir uno a la lista"/></button>`;
         modalCard += `</div>`;
         modalCard += `</div>`;
       }
     }
     modalWindow.innerHTML = modalCard;
-    handleAddProduct();
-    handleRestProduct();
+    handleAddProduct();/* 
+    handleRestProduct(); */
   }
   modalTriger.forEach((item) => item.addEventListener('click', handelModal));
   }
@@ -75,19 +75,30 @@ const showModal = () => {
 const handleAddProduct = () => {
   const addBtn = document.querySelector('.plusBtn');
   const addProduct = () => {
-    console.log('me han clicado', addBtn.id);
-    for (const item of vegetables) {
-      if (addBtn.id === item.id){
-        cartProducts.push(item)
-        console.log(cartProducts);
+    //comprobar si el elemento está en la cesta
+    let foundProduct;
+    for (const item of cartProducts) {
+      if (item.id === addBtn.id){
+        foundProduct = item;
       }
-      
     }
-    paintCartNumber();
+    if (foundProduct === undefined) {
+      //no está en la cesta
+      for (const item of vegetables) {
+        if (addBtn.id === item.id){
+          cartProducts.push(item);
+        }
+      }
+    } else {
+      //está en la cesta incrementamos el número de p 
+     foundProduct.quantity += 1 ;
+    }
+    
+    paintCartNumber(foundProduct);
   }
   addBtn.addEventListener('click', addProduct);
   
-}
+}/* 
 const handleRestProduct = () => {
   const minusBtn = document.querySelector('.minusBtn');
   const restProduct = () => {
@@ -95,25 +106,28 @@ const handleRestProduct = () => {
     for (const item of vegetables) {
       if (minusBtn.id === item.id){
         cartProducts.splice(item)
-        console.log(cartProducts);
       }
-      
-    }
+    } 
   }
  minusBtn.addEventListener('click', restProduct);
   
-}
+} */
 //Pintar el número del carrito
-const paintCartNumber = () => {
+const paintCartNumber = (foundProduct) => {
+  console.log(foundProduct);
   const cart = document.querySelector('.js-cart-number');
-  console.log(cart);
+  const modalNumber = document.querySelector('.js-modal-number');
   cart.classList.add('show');
-  cart.innerHTML = cartProducts.length;  
+
+  if (foundProduct === undefined) {
+    cart.innerHTML = cartProducts.length;
+    modalNumber.innerHTML = cartProducts.length;
+  }else{
+    cart.innerHTML = cartProducts.length + foundProduct.quantity;
+    modalNumber.innerHTML = cartProducts.length + foundProduct.quantity;
+  }
+  modalNumber.innerHTML
 }
-/*
-const handleAddProduct = (ev) => {
-  console.log('me han clickado')
-}
-addBtn.addEventListener('click', handleAddProduct); */
+
 //ejecución de eventos
 getData();

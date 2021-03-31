@@ -30,7 +30,7 @@
   width: 100%;
 }
 .number {
-  background: red;
+  display: none;
   text-align: center;
   width: 16px;
   border-radius: 50%;
@@ -40,6 +40,8 @@
   position: absolute;
   bottom: 32px;
   right: -3px;
+  font-weight: bold;
+  background-color: white;
 }
 /* ESTILOS PARA LA LISTA DE LA COMPRA */
 .list {
@@ -73,4 +75,8 @@
 }
 .cart-icon {
   width: 12px;
+}
+/* ESTILOS GENÉRICOS */
+.show {
+  display: block;
 }
