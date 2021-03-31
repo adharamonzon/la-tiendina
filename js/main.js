@@ -65,8 +65,9 @@ const showModal = () => {
       }
     }
     modalWindow.innerHTML = modalCard;
-    handleAddProduct();/* 
-    handleRestProduct(); */
+    //llamar a la función de la modal para incrementar o decrementar productos
+    handleAddProduct(); 
+    handleRestProduct();
   }
   modalTriger.forEach((item) => item.addEventListener('click', handelModal));
   }
@@ -75,44 +76,49 @@ const showModal = () => {
 const handleAddProduct = () => {
   const addBtn = document.querySelector('.plusBtn');
   const addProduct = () => {
-    //comprobar si el elemento está en la cesta
     let foundProduct;
-    for (const item of cartProducts) {
-      if (item.id === addBtn.id){
-        foundProduct = item;
+    for (const item of vegetables) {
+      console.log(item.quantity);
+      if (item.id === addBtn.id)
+      item.quantity += 1;
       }
-    }
     if (foundProduct === undefined) {
-      //no está en la cesta
       for (const item of vegetables) {
         if (addBtn.id === item.id){
           cartProducts.push(item);
         }
       }
-    } else {
-      //está en la cesta incrementamos el número de p 
-     foundProduct.quantity += 1 ;
     }
-    
+    for (const item of cartProducts) {
+      if (item.id === addBtn.id){
+        foundProduct = item;
+      }
+    }
+   
+    //pintar el número de productos en el carrito y en la tarjeta modal
     paintCartNumber(foundProduct);
   }
   addBtn.addEventListener('click', addProduct);
   
-}/* 
+}
+
+//Restar del carrito o eliminar el producto
+
 const handleRestProduct = () => {
   const minusBtn = document.querySelector('.minusBtn');
   const restProduct = () => {
     console.log('me han clicado', minus.id);
     for (const item of vegetables) {
       if (minusBtn.id === item.id){
-        cartProducts.splice(item)
+        console.log(item);
       }
     } 
   }
  minusBtn.addEventListener('click', restProduct);
   
-} */
-//Pintar el número del carrito
+}
+
+//Pintar el número del carrito y tarjeta modal
 const paintCartNumber = (foundProduct) => {
   console.log(foundProduct);
   const cart = document.querySelector('.js-cart-number');
@@ -123,8 +129,8 @@ const paintCartNumber = (foundProduct) => {
     cart.innerHTML = cartProducts.length;
     modalNumber.innerHTML = cartProducts.length;
   }else{
-    cart.innerHTML = cartProducts.length + foundProduct.quantity;
-    modalNumber.innerHTML = cartProducts.length + foundProduct.quantity;
+    cart.innerHTML = foundProduct.quantity;
+    modalNumber.innerHTML = foundProduct.quantity;
   }
   modalNumber.innerHTML
 }
