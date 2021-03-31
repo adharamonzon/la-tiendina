@@ -58,7 +58,7 @@ const showModal = () => {
         modalCard += '</div>';
         modalCard += '<div class="modal-footer">'
         modalCard += `<button type="button" class="btn btn-outline-secondary minusBtn" id=${item.id}><img class="cart-icon" src="../css/icons/menos.svg" alt="Quitar uno de la lista"/></button>`
-        modalCard += `<p class="js-modal-number">0<p>`;
+        modalCard += `<p class="js-modal-number">${item.quantity}<p>`;
         modalCard += `<button type="button" class="btn btn-outline-secondary plusBtn" id=${item.id}><img class="cart-icon" src="../css/icons/mas.svg" alt="Añadir uno a la lista"/></button>`;
         modalCard += `</div>`;
         modalCard += `</div>`;
@@ -78,7 +78,6 @@ const handleAddProduct = () => {
   const addProduct = () => {
     let foundProduct;
     for (const item of vegetables) {
-      console.log(item.quantity);
       if (item.id === addBtn.id)
       item.quantity += 1;
       }
@@ -86,7 +85,7 @@ const handleAddProduct = () => {
       for (const item of vegetables) {
         if (addBtn.id === item.id){
           cartProducts.push(item);
-        }
+              }
       }
     }
     for (const item of cartProducts) {
@@ -97,6 +96,7 @@ const handleAddProduct = () => {
    
     //pintar el número de productos en el carrito y en la tarjeta modal
     paintCartNumber(foundProduct);
+    
   }
   addBtn.addEventListener('click', addProduct);
   
@@ -118,22 +118,34 @@ const handleRestProduct = () => {
   
 }
 
-//Pintar el número del carrito y tarjeta modal
+//Pintar el número de productos
 const paintCartNumber = (foundProduct) => {
-  console.log(foundProduct);
-  const cart = document.querySelector('.js-cart-number');
+  //Pinar en la modal
   const modalNumber = document.querySelector('.js-modal-number');
-  cart.classList.add('show');
-
-  if (foundProduct === undefined) {
-    cart.innerHTML = cartProducts.length;
-    modalNumber.innerHTML = cartProducts.length;
-  }else{
-    cart.innerHTML = foundProduct.quantity;
-    modalNumber.innerHTML = foundProduct.quantity;
+  modalNumber.innerHTML = foundProduct.quantity;
+  paintCart();
   }
-  modalNumber.innerHTML
+
+  //pintar carrito
+const paintCart = () => {
+  const cart = document.querySelector('.js-cartShow');
+  console.log(cart);
+  let cartCode = '';
+  for (const item of cartProducts) {
+    cartCode += `<tr>`;
+    cartCode += `<th scope="tow"></th>`;
+    cartCode += `<td>${item.name}</td>`;
+    cartCode += `<td><button class="btn btn-outline-secondary js-plusBtn">`;
+    cartCode += `<img class="cart-icon" src="./css/icons/mas.svg" alt="Añadir uno a la lista" /></button>`;
+    cartCode += `<p class="js-modal-number">${item.quantity}</p>`;
+    cartCode += `<button class="btn btn-outline-secondary js-minusBtn"><img class="cart-icon" src="./css/icons/menos.svg" alt="Restar uno a la lista" /></button>`
+    cartCode += `</td>`;
+    cartCode += `<td>16.65€</td>`
+  }
+  cart.innerHTML = cartCode;
+  
 }
+    
 
 //ejecución de eventos
 getData();
