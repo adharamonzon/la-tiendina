@@ -18,9 +18,6 @@
   right: 40px;
   cursor: pointer;
 }
-.icon {
-  width: 100%;
-}
 .number {
   display: none;
   text-align: center;
@@ -39,8 +36,13 @@
   height: 70vh !important;
   background: no-repeat center;
 }
-
 /* ESTILOS DE LA SECCIÓN DE PRODUCTOS (LISTADO) */
+.main {
+  display: flex;
+}
+.ourProducts {
+  width: 75%;
+}
 .section-title {
   margin: 20px;
 }
@@ -101,6 +103,40 @@
 }
 .cart-icon {
   width: 12px;
+}
+/* ESTILOS CARRITO DE LA COMPRA */
+.cart {
+  width: 25%;
+  margin-right: 40px;
+}
+.cart-header {
+  display: flex;
+}
+.cart-title {
+  margin: 20px;
+}
+.icon {
+  width: 40px;
+}
+.btn-cart {
+  height: 20px;
+  width: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.quantity {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1px;
+}
+.trash-icon {
+  width: 20px;
+  cursor: pointer;
+}
+.price-text {
+  display: flex;
+  justify-content: space-around;
 }
 /* Estilo genéricos */
 .show {

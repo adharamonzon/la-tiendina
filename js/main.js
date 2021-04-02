@@ -132,16 +132,21 @@ const paintCart = () => {
   console.log(cart);
   let cartCode = '';
   for (const item of cartProducts) {
+    if (item.quantity >=0){
     cartCode += `<tr>`;
     cartCode += `<th scope="tow"></th>`;
     cartCode += `<td>${item.name}</td>`;
-    cartCode += `<td><button class="btn btn-outline-secondary js-plusBtn">`;
-    cartCode += `<img class="cart-icon" src="./css/icons/mas.svg" alt="Añadir uno a la lista" /></button>`;
+    cartCode += `<td class="quantity">`;
+    cartCode += `<button class="btn btn-outline-secondary js-minusBtn btn-cart"><img class="cart-icon" src="./css/icons/menos.svg" alt="Restar uno a la lista" /></button>`;
     cartCode += `<p class="js-modal-number">${item.quantity}</p>`;
-    cartCode += `<button class="btn btn-outline-secondary js-minusBtn"><img class="cart-icon" src="./css/icons/menos.svg" alt="Restar uno a la lista" /></button>`
+    cartCode += `<button class="btn btn-outline-secondary js-plusBtn btn-cart">`
+    cartCode += `<img class="cart-icon" src="./css/icons/mas.svg" alt="Añadir uno a la lista" /></button>`;
     cartCode += `</td>`;
-    cartCode += `<td>16.65€</td>`
+    cartCode += `<td c><p class="price-text">${item.price}€`;
+    cartCode += `<img class="trash-icon" src="./css/icons/trash.svg" alt="Eliminar" /></p>`;
+    cartCode += `</td>`;
   }
+}
   cart.innerHTML = cartCode;
   
 }

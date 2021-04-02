@@ -11,15 +11,9 @@
     <title>La Tiendina</title>
   </head>
   <body>
-    <header class="container-lg">
-      <h1 class="header-title">LA TIENDINA</h1>
-      <h3 class="header-subtitle">Nuestros productos de la tierra:</h3>
-      <div class="header-basket">
-        <a href="./cart.html" class="header-link" title="Ir a la cesta" >
-          <img class="icon" src="./css/icons/basket.svg" alt="cesta de la compra" />
-        </a>
-        <div class="number js-cartShow-number"></div>
-      </div>
+    <header class="container-lg header">
+      <h1 class="header-title">LA TIENDINA</h1>      
+      <!-- Carrousel -->
       <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
@@ -42,28 +36,37 @@
         </button>
       </div>
     </header>
-    <section class="container-lg">
-      <h2 class="section-title">Nuestros productos de la huerta</h2>
-      <article>
-        <h3 class="vegetables-title">Verduras y Frutas</h3>
-        <div>
-          <ul class="vegetables-list js-vegetables"></ul>
-        </div>
-      </article>
-      <aside><table class="table table-sm">
-        <thead>
-          <tr>
-            <th scope="col"></th>
-            <th scope="col">Producto</th>
-            <th scope="col">Cantidad</th>
-            <th scope="col">Precio</th>
-          </tr>
+    <main class="main container-fluid">
+      <section class="container-lg ourProducts">
+        <h2 class="section-title">Nuestros productos de la huerta</h2>
+          <article>
+            <h3 class="vegetables-title">Verduras y Frutas</h3>
+            <div>
+            <ul class="vegetables-list js-vegetables"></ul>
+            </div>
+          </article>
+      </section> 
+      <!-- Carrito -->
+      <aside class="table-responsive cart">
+        <div class="cart-header">
+        <h3 class="cart-title">Esta es tu compra</h3>
+        <img class="icon" src="./css/icons/basket.svg" alt="cesta de la compra" />
+      </div>
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Producto</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Precio</th>
+            </tr>
         </thead>
         <tbody class="js-cartShow">
         </tbody>
-      </table></aside>
-    </section>
+      </table>
+    </aside>
     <aside>
+    </main>
       <!-- Modal -->
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
