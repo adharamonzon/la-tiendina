@@ -72,9 +72,43 @@ const showModal = () => {
   modalTriger.forEach((item) => item.addEventListener('click', handelModal));
   }
 
+//Pintar el número de productos
+const paintCartNumber = (foundProduct) => {
+  //Pinar en la modal
+  const modalNumber = document.querySelector('.js-modal-number');
+  modalNumber.innerHTML = foundProduct.quantity;
+  paintCart();
+  }
+
+  //pintar carrito
+const paintCart = () => {
+  const cart = document.querySelector('.js-cartShow');
+  
+  let cartCode = '';
+  for (const item of cartProducts) {
+    if (item.quantity >=0){
+    cartCode += `<tr>`;
+    cartCode += `<th scope="tow"></th>`;
+    cartCode += `<td>${item.name}</td>`;
+    cartCode += `<td class="quantity">`;
+    cartCode += `<button class="btn btn-outline-secondary minusBtn btn-cart"><img class="cart-icon" src="./css/icons/menos.svg" alt="Restar uno a la lista" /></button>`;
+    cartCode += `<p class="js-modal-number">${item.quantity}</p>`;
+    cartCode += `<button class="btn btn-outline-secondary plusBtnCart btn-cart">`
+    cartCode += `<img class="cart-icon" src="./css/icons/mas.svg" alt="Añadir uno a la lista" /></button>`;
+    cartCode += `</td>`;
+    cartCode += `<td><p class="price-text">${item.price}€`;
+    cartCode += `<img class="trash-icon" src="./css/icons/trash.svg" alt="Eliminar" /></p>`;
+    cartCode += `</td>`;
+  }
+}
+  cart.innerHTML = cartCode;
+  handleAddProduct(); 
+}
 //Añadir al carrito
 const handleAddProduct = () => {
   const addBtn = document.querySelector('.plusBtn');
+  const addBtnCart = document.querySelector('.plusBtnCart');
+  console.log(addBtnCart);
   const addProduct = () => {
     let foundProduct;
     for (const item of vegetables) {
@@ -99,7 +133,8 @@ const handleAddProduct = () => {
     
   }
   addBtn.addEventListener('click', addProduct);
-  
+  addBtnCart.addEventListener('click', addProduct);
+
 }
 
 //Restar del carrito o eliminar el producto
@@ -115,39 +150,6 @@ const handleRestProduct = () => {
     } 
   }
  minusBtn.addEventListener('click', restProduct);
-  
-}
-
-//Pintar el número de productos
-const paintCartNumber = (foundProduct) => {
-  //Pinar en la modal
-  const modalNumber = document.querySelector('.js-modal-number');
-  modalNumber.innerHTML = foundProduct.quantity;
-  paintCart();
-  }
-
-  //pintar carrito
-const paintCart = () => {
-  const cart = document.querySelector('.js-cartShow');
-  console.log(cart);
-  let cartCode = '';
-  for (const item of cartProducts) {
-    if (item.quantity >=0){
-    cartCode += `<tr>`;
-    cartCode += `<th scope="tow"></th>`;
-    cartCode += `<td>${item.name}</td>`;
-    cartCode += `<td class="quantity">`;
-    cartCode += `<button class="btn btn-outline-secondary js-minusBtn btn-cart"><img class="cart-icon" src="./css/icons/menos.svg" alt="Restar uno a la lista" /></button>`;
-    cartCode += `<p class="js-modal-number">${item.quantity}</p>`;
-    cartCode += `<button class="btn btn-outline-secondary js-plusBtn btn-cart">`
-    cartCode += `<img class="cart-icon" src="./css/icons/mas.svg" alt="Añadir uno a la lista" /></button>`;
-    cartCode += `</td>`;
-    cartCode += `<td c><p class="price-text">${item.price}€`;
-    cartCode += `<img class="trash-icon" src="./css/icons/trash.svg" alt="Eliminar" /></p>`;
-    cartCode += `</td>`;
-  }
-}
-  cart.innerHTML = cartCode;
   
 }
     
