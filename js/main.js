@@ -67,26 +67,19 @@ const showModal = () => {
     modalWindow.innerHTML = modalCard;
     //llamar a la función de la modal para incrementar o decrementar productos
     handleAddProduct(); 
-    handleRestProduct();
   }
   modalTriger.forEach((item) => item.addEventListener('click', handelModal));
+
   }
 
 //Pintar el número de productos
 const paintCartNumber = (foundProduct) => {
-  //Pinar en la modal
   const modalNumber = document.querySelector('.js-modal-number');
-  modalNumber.innerHTML = foundProduct.quantity;
-  paintCart();
+  return modalNumber.innerHTML = foundProduct.quantity;
   }
-
-  //pintar carrito
-const paintCart = () => {
-  const cart = document.querySelector('.js-cartShow');
-  
-  let cartCode = '';
-  for (const item of cartProducts) {
-    if (item.quantity >=0){
+  const cartElement = document.querySelector('.js-cartShow');
+  const getCartItemHtmlCode = item => {
+    let cartCode = '';
     cartCode += `<tr>`;
     cartCode += `<th scope="tow"></th>`;
     cartCode += `<td>${item.name}</td>`;
@@ -96,63 +89,66 @@ const paintCart = () => {
     cartCode += `<button class="btn btn-outline-secondary plusBtnCart btn-cart">`
     cartCode += `<img class="cart-icon" src="./css/icons/mas.svg" alt="Añadir uno a la lista" /></button>`;
     cartCode += `</td>`;
-    cartCode += `<td><p class="price-text">${item.price}€`;
+    cartCode += `<td><p class="price-text">${item.price * item.quantity}€`;
     cartCode += `<img class="trash-icon" src="./css/icons/trash.svg" alt="Eliminar" /></p>`;
     cartCode += `</td>`;
+    return cartCode; 
   }
-}
-  cart.innerHTML = cartCode;
-  handleAddProduct(); 
-}
+  const getCartTotalHtmlCode = () => {
+    let cartCodeTotal = '';
+    cartCodeTotal += `<tr class="cart-total">`;
+    cartCodeTotal += `<td>Total</td>`;
+    cartCodeTotal += `<td>${getTotalPrice()}€</td>`;
+    cartCodeTotal += `</tr>`;
+    return cartCodeTotal;
+  }
+  const getTotalPrice = () => {
+    let total = 0;
+    for (const item of cartProducts) {
+      total += item.price * item.quantity
+    }
+    return total;
+  }
+  const paintCartItems = () => {
+    cartElement.innerHTML = '';
+    for (const item of cartProducts) {
+    cartElement.innerHTML += getCartItemHtmlCode(item)
+   }
+    cartElement.innerHTML += getCartTotalHtmlCode();
+  }
+ 
+
 //Añadir al carrito
 const handleAddProduct = () => {
   const addBtn = document.querySelector('.plusBtn');
   const addBtnCart = document.querySelector('.plusBtnCart');
-  console.log(addBtnCart);
-  const addProduct = () => {
-    let foundProduct;
-    for (const item of vegetables) {
-      if (item.id === addBtn.id)
-      item.quantity += 1;
-      }
-    if (foundProduct === undefined) {
-      for (const item of vegetables) {
-        if (addBtn.id === item.id){
-          cartProducts.push(item);
-              }
-      }
-    }
+  const addProduct = (ev) => {
+    const clickedId = ev.currentTarget.id;
+    let foundItem;
     for (const item of cartProducts) {
-      if (item.id === addBtn.id){
-        foundProduct = item;
+      if (item.id === clickedId){
+        foundItem = item;
+        }
       }
-    }
-   
-    //pintar el número de productos en el carrito y en la tarjeta modal
+      let foundProduct;
+      if (foundItem === undefined){
+        for (const product of vegetables) {
+         if (product.id === clickedId){
+           foundProduct = product;
+          }
+        }
+       cartProducts.push(foundProduct)
+      } else {
+        foundItem.quantity +=1;
+      }
+    paintCartItems();
     paintCartNumber(foundProduct);
-    
   }
   addBtn.addEventListener('click', addProduct);
   addBtnCart.addEventListener('click', addProduct);
 
-}
-
-//Restar del carrito o eliminar el producto
-
-const handleRestProduct = () => {
-  const minusBtn = document.querySelector('.minusBtn');
-  const restProduct = () => {
-    console.log('me han clicado', minus.id);
-    for (const item of vegetables) {
-      if (minusBtn.id === item.id){
-        console.log(item);
-      }
-    } 
-  }
- minusBtn.addEventListener('click', restProduct);
-  
-}
-    
+}  
 
 //ejecución de eventos
 getData();
+paintCartItems();

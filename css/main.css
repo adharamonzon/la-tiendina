@@ -138,6 +138,9 @@
   display: flex;
   justify-content: space-around;
 }
+.cart-total {
+  font-weight: bolder;
+}
 /* Estilo genéricos */
 .show {
   display: block;
