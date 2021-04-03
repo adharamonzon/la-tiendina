@@ -9,7 +9,6 @@ const getData = () => {
    vegetables = data;
    paintGroceries();
   })
-
 }
 const vegetablesList = document.querySelector('.js-vegetables')
 
@@ -66,13 +65,11 @@ const showModal = () => {
     }
     modalWindow.innerHTML = modalCard;
     //llamar a la función de la modal para incrementar o decrementar productos
-    handleAddProduct(); /* 
-    handleDeleteProduct(); */
+    handleAddProduct();
+    handleDeleteProduct();
   }
   modalTriger.forEach((item) => item.addEventListener('click', handelModal));
-
   }
-
 
 //Pintar el carrito de la compa
 const cartElement = document.querySelector('.js-cartShow');
@@ -84,7 +81,7 @@ const getCartItemHtmlCode = item => {
   cartCode += `<th scope="tow"></th>`;
   cartCode += `<td>${item.name}</td>`;
   cartCode += `<td class="quantity">`;
-  cartCode += `<button class="btn btn-outline-secondary minusBtn btn-cart"id=${item.id}><img class="cart-icon" src="./css/icons/menos.svg" alt="Restar uno a la lista" /></button>`;
+  cartCode += `<button class="btn btn-outline-secondary minusBtnCart btn-cart"id=${item.id}><img class="cart-icon" src="./css/icons/menos.svg" alt="Restar uno a la lista" /></button>`;
   cartCode += `<p class="js-modal-number">${item.quantity}</p>`;
   cartCode += `<button class="btn btn-outline-secondary plusBtnCart btn-cart addProduct" id=${item.id}>`
   cartCode += `<img class="cart-icon" src="./css/icons/mas.svg" alt="Añadir uno a la lista" /></button>`;
@@ -94,6 +91,7 @@ const getCartItemHtmlCode = item => {
   cartCode += `</td>`;
   return cartCode; 
 }
+
 //Pintar el total del carro de la compra
 const getCartTotalHtmlCode = () => {
   let cartCodeTotal = '';
@@ -103,6 +101,7 @@ const getCartTotalHtmlCode = () => {
   cartCodeTotal += `</tr>`;
   return cartCodeTotal;
 }
+
 //F(x) que calcula el precio total de la compra
 const getTotalPrice = () => {
   let total = 0;
@@ -113,6 +112,7 @@ const getTotalPrice = () => {
   }
   return finalNumber;
 }
+
 //f(x) ejecutadora de las que pintan el carrito y el total de los productos del carrito de la compra
 const paintCartItems = () => {
   cartElement.innerHTML = '';
@@ -121,10 +121,10 @@ const paintCartItems = () => {
   }
   cartElement.innerHTML += getCartTotalHtmlCode();
   listenCartAddBtns();
+  listenCartDeleteBtns();
 }
 
-
-//Añadir al carrito
+//Añadir al carrito desde la modal
 const handleAddProduct = () => {
   const addBtn = document.querySelector('.plusBtn');
   const addProduct = (ev) => {
@@ -153,8 +153,8 @@ const handleAddProduct = () => {
   addBtn.addEventListener('click', addProduct)  
 }  
 
-//Restar del carrito
-/* const handleDeleteProduct = () => {
+//Restar del carrito desde la modal
+const handleDeleteProduct = () => {
   const deleteBtn = document.querySelector('.minusBtn');
   const deleteProduct = (ev) => {
     const clickedId = ev.currentTarget.id;
@@ -162,33 +162,33 @@ const handleAddProduct = () => {
     for (const item of cartProducts) {
       if (item.id === clickedId){
         foundItem = item;
-        if (foundItem.quantity >= 1){
+        if (foundItem.quantity > 1){
           foundItem.quantity -= 1
         } else {
-
-        }
-        }
-      }
-      if (foundItem === undefined){
-        for (const product of vegetables) {
-         if (product.id === clickedId){
-           foundProduct = product;
+          let foundIndex;
+          for (let index = 0; index < cartProducts.length; index++) {
+            if (cartProducts[index].id === clickedId){
+              foundIndex = index
+            }
           }
+          cartProducts.splice(foundIndex,1);
         }
-       cartProducts.push(foundProduct)
-      } else {
-        foundItem.quantity +=1;
+        }
       }
-    paintCartItems();
-    paintCartNumber(foundItem);
+      
+    paintCartItems();/* 
+    paintCartNumber(foundItem); */
   }
   deleteBtn.addEventListener('click', deleteProduct);
-}  */
+}
+
 //Pintar el número de productos en la venta modal
 /* const paintCartNumber = (foundItem) => {
   const modalNumber = document.querySelector('.js-modal-number');
   return modalNumber.innerHTML = foundItem.quantity;
   } */
+
+//f(x) añadir productos desde el carrito
 const addCartProduct = (ev) => {
 const clickedId = ev.currentTarget.id;
 let foundItem;
@@ -200,22 +200,48 @@ for (const item of cartProducts) {
   }
   paintCartItems()
 }
+
+//f(x) restar productos desde el carrito
+const deleteCartProduct = (ev) => {
+  const clickedId = ev.currentTarget.id;
+  let foundItem;
+  for (const item of cartProducts) {
+    if (item.id === clickedId){
+      foundItem = item;
+      if (foundItem.quantity > 1){
+        foundItem.quantity -=1;
+      }else{
+        let foundIndex;
+          for (let index = 0; index < cartProducts.length; index++) {
+            if (cartProducts[index].id === clickedId){
+              foundIndex = index
+            }
+          }
+          cartProducts.splice(foundIndex,1);
+      }
+      } 
+    }
+    paintCartItems()
+  }
+
 //Escuchar los botones del carrito
 const listenCartAddBtns = () => {
   const cartAddBtns = document.querySelectorAll('.plusBtnCart');
-  console.log(cartAddBtns);
   for (const btn of cartAddBtns) {
-    console.log('me han clicado' + btn.id);
     btn.addEventListener('click', addCartProduct)
+  }
+}
+const listenCartDeleteBtns = () => {
+  const cartDeleteBtns = document.querySelectorAll('.minusBtnCart');
+  for (const btn of cartDeleteBtns) {
+    btn.addEventListener('click', deleteCartProduct)
   }
 }
 //evento de comprar
 const buy = document.querySelector('.js-buyIt');
-
 const handleBuy = () => {
   alert('Enhorabuena por la compra')
 }
-
 buy.addEventListener('click', handleBuy);
 
 //ejecución de eventos

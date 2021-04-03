@@ -127,7 +127,7 @@
 }
 .quantity {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin-top: 1px;
 }
 .trash-icon {
