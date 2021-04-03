@@ -46,7 +46,6 @@ const showModal = () => {
     modalCard = '';
     const product = ev.currentTarget.id
     for (const item of vegetables) {
-    console.log(item.description);
       if (product === item.id){
         modalCard += `<div class="modal-header" id=${item.id}>`;
         modalCard += `<h5 class="modal-title" id="exampleModalLabel">${item.name}</h5>`;
@@ -88,7 +87,7 @@ const getCartItemHtmlCode = item => {
   cartCode += `<img class="cart-icon" src="./css/icons/mas.svg" alt="Añadir uno a la lista" /></button>`;
   cartCode += `</td>`;
   cartCode += `<td><p class="price-text">${totalPrice}€`;
-  cartCode += `<img class="trash-icon" src="./css/icons/trash.svg" alt="Eliminar" /></p>`;
+  cartCode += `<img class="trash-icon" id=${item.id} src="./css/icons/trash.svg" alt="Eliminar" /></p>`;
   cartCode += `</td>`;
   return cartCode; 
 }
@@ -123,6 +122,7 @@ const paintCartItems = () => {
   cartElement.innerHTML += getCartTotalHtmlCode();
   listenCartAddBtns();
   listenCartDeleteBtns();
+  listenTrashBtns();
 }
 
 //Añadir al carrito desde la modal
@@ -225,6 +225,24 @@ const deleteCartProduct = (ev) => {
     paintCartItems()
   }
 
+//Borrar todo el producto desde el carrito
+const deleteTheProduct = (ev) => {
+  const clickedId = ev.currentTarget.id;
+  let foundItem;
+  for (const item of cartProducts) {
+    if (item.id === clickedId){
+      foundItem = item;
+      let foundIndex;
+        for (let index = 0; index < cartProducts.length; index++) {
+          if (cartProducts[index].id === clickedId){
+              foundIndex = index
+            }
+          }
+          cartProducts.splice(foundIndex,1);
+      }
+    }
+    paintCartItems()
+  }
 //Escuchar los botones del carrito
 const listenCartAddBtns = () => {
   const cartAddBtns = document.querySelectorAll('.plusBtnCart');
@@ -236,6 +254,12 @@ const listenCartDeleteBtns = () => {
   const cartDeleteBtns = document.querySelectorAll('.minusBtnCart');
   for (const btn of cartDeleteBtns) {
     btn.addEventListener('click', deleteCartProduct)
+  }
+}
+const listenTrashBtns = () => {
+  const trashBtns = document.querySelectorAll('.trash-icon');
+  for (const btn of trashBtns) {
+    btn.addEventListener('click', deleteTheProduct)
   }
 }
 //evento de comprar
