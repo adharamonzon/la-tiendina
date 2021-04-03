@@ -77,6 +77,8 @@ const showModal = () => {
 //Pintar el carrito de la compa
 const cartElement = document.querySelector('.js-cartShow');
 const getCartItemHtmlCode = item => {
+  let totalPrice = item.quantity*item.price;
+  totalPrice = totalPrice.toFixed(2)
   let cartCode = '';
   cartCode += `<tr>`;
   cartCode += `<th scope="tow"></th>`;
@@ -87,7 +89,7 @@ const getCartItemHtmlCode = item => {
   cartCode += `<button class="btn btn-outline-secondary plusBtnCart btn-cart addProduct" id=${item.id}>`
   cartCode += `<img class="cart-icon" src="./css/icons/mas.svg" alt="Añadir uno a la lista" /></button>`;
   cartCode += `</td>`;
-  cartCode += `<td><p class="price-text">${getTotalPrice()}€`;
+  cartCode += `<td><p class="price-text">${totalPrice}€`;
   cartCode += `<img class="trash-icon" src="./css/icons/trash.svg" alt="Eliminar" /></p>`;
   cartCode += `</td>`;
   return cartCode; 
