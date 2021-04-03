@@ -66,19 +66,15 @@ const showModal = () => {
     }
     modalWindow.innerHTML = modalCard;
     //llamar a la función de la modal para incrementar o decrementar productos
-    handleAddProduct(); 
-    handleDeleteProduct();
+    handleAddProduct(); /* 
+    handleDeleteProduct(); */
   }
   modalTriger.forEach((item) => item.addEventListener('click', handelModal));
 
   }
 
-//Pintar el número de productos
-const paintCartNumber = (foundItem) => {
-  const modalNumber = document.querySelector('.js-modal-number');
-  return modalNumber.innerHTML = foundItem.quantity;
-  }
 
+//Pintar el carrito de la compa
 const cartElement = document.querySelector('.js-cartShow');
 const getCartItemHtmlCode = item => {
   let cartCode = '';
@@ -86,16 +82,17 @@ const getCartItemHtmlCode = item => {
   cartCode += `<th scope="tow"></th>`;
   cartCode += `<td>${item.name}</td>`;
   cartCode += `<td class="quantity">`;
-  cartCode += `<button class="btn btn-outline-secondary minusBtn btn-cart"><img class="cart-icon" src="./css/icons/menos.svg" alt="Restar uno a la lista" /></button>`;
+  cartCode += `<button class="btn btn-outline-secondary minusBtn btn-cart"id=${item.id}><img class="cart-icon" src="./css/icons/menos.svg" alt="Restar uno a la lista" /></button>`;
   cartCode += `<p class="js-modal-number">${item.quantity}</p>`;
-  cartCode += `<button class="btn btn-outline-secondary plusBtnCart btn-cart addProduct">`
+  cartCode += `<button class="btn btn-outline-secondary plusBtnCart btn-cart addProduct" id=${item.id}>`
   cartCode += `<img class="cart-icon" src="./css/icons/mas.svg" alt="Añadir uno a la lista" /></button>`;
   cartCode += `</td>`;
-  cartCode += `<td><p class="price-text">${item.price * item.quantity}€`;
+  cartCode += `<td><p class="price-text">${getTotalPrice()}€`;
   cartCode += `<img class="trash-icon" src="./css/icons/trash.svg" alt="Eliminar" /></p>`;
   cartCode += `</td>`;
   return cartCode; 
 }
+//Pintar el total del carro de la compra
 const getCartTotalHtmlCode = () => {
   let cartCodeTotal = '';
   cartCodeTotal += `<tr class="cart-total">`;
@@ -104,21 +101,26 @@ const getCartTotalHtmlCode = () => {
   cartCodeTotal += `</tr>`;
   return cartCodeTotal;
 }
+//F(x) que calcula el precio total de la compra
 const getTotalPrice = () => {
   let total = 0;
+  let finalNumber = 0;
   for (const item of cartProducts) {
     total += item.price * item.quantity
+    finalNumber =  total.toFixed(2);
   }
-  return total;
+  return finalNumber;
 }
+//f(x) ejecutadora de las que pintan el carrito y el total de los productos del carrito de la compra
 const paintCartItems = () => {
   cartElement.innerHTML = '';
   for (const item of cartProducts) {
   cartElement.innerHTML += getCartItemHtmlCode(item)
   }
   cartElement.innerHTML += getCartTotalHtmlCode();
-  
+  listenCartAddBtns();
 }
+
 
 //Añadir al carrito
 const handleAddProduct = () => {
@@ -142,10 +144,11 @@ const handleAddProduct = () => {
       } else {
         foundItem.quantity +=1;
       }
-    paintCartItems();
-    paintCartNumber(foundItem);
+    paintCartItems();/* 
+    paintCartNumber(foundItem); */
+    
   }
-  addBtn.addEventListener('click', addProduct);
+  addBtn.addEventListener('click', addProduct)  
 }  
 
 //Restar del carrito
@@ -179,6 +182,31 @@ const handleAddProduct = () => {
   }
   deleteBtn.addEventListener('click', deleteProduct);
 }  */
+//Pintar el número de productos en la venta modal
+/* const paintCartNumber = (foundItem) => {
+  const modalNumber = document.querySelector('.js-modal-number');
+  return modalNumber.innerHTML = foundItem.quantity;
+  } */
+const addCartProduct = (ev) => {
+const clickedId = ev.currentTarget.id;
+let foundItem;
+for (const item of cartProducts) {
+  if (item.id === clickedId){
+    foundItem = item;
+    foundItem.quantity +=1;
+    }
+  }
+  paintCartItems()
+}
+//Escuchar los botones del carrito
+const listenCartAddBtns = () => {
+  const cartAddBtns = document.querySelectorAll('.plusBtnCart');
+  console.log(cartAddBtns);
+  for (const btn of cartAddBtns) {
+    console.log('me han clicado' + btn.id);
+    btn.addEventListener('click', addCartProduct)
+  }
+}
 //evento de comprar
 const buy = document.querySelector('.js-buyIt');
 
