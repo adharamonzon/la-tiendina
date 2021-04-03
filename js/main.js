@@ -46,14 +46,15 @@ const showModal = () => {
     modalCard = '';
     const product = ev.currentTarget.id
     for (const item of vegetables) {
-    
+    console.log(item.description);
       if (product === item.id){
         modalCard += `<div class="modal-header" id=${item.id}>`;
         modalCard += `<h5 class="modal-title" id="exampleModalLabel">${item.name}</h5>`;
         modalCard += `<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>`;
         modalCard += `</div>`;
         modalCard += `<div modal-body> `;
-        modalCard += `<img class="modal-img" src=${item.url} alt="Fodo de ${item.name}"`
+        modalCard += `<img class="modal-img" src=${item.url} alt="Fodo de ${item.name}"/>`;
+        modalCard += `<p class="modal-description">${item.description}</p>`;
         modalCard += '</div>';
         modalCard += '<div class="modal-footer">'
         modalCard += `<button type="button" class="btn btn-outline-secondary minusBtn" id=${item.id}><img class="cart-icon" src="../css/icons/menos.svg" alt="Quitar uno de la lista"/></button>`

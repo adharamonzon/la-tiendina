@@ -87,6 +87,7 @@
 /* ESTILOS DE LA VENTANA MODAL */
 .modal-content {
   width: 80%;
+  margin-top: 200px;
 }
 .modal-title {
   font-size: 24px;
@@ -97,6 +98,9 @@
 .modal-img {
   height: 200px;
   width: auto;
+}
+.modal-description {
+  margin-left: 5px;
 }
 .modal-footer {
   justify-content: flex-start;
