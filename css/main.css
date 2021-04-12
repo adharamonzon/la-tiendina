@@ -145,6 +145,32 @@
 .cart-total {
   font-weight: bolder;
 }
+/* ESTILOS DEL DRAG AND DROP */
+.cart-drag-drop {
+  margin: 20px;
+}
+.drop-section {
+  height: 150px;
+  border: dashed red 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.drop-img-content {
+  border: dashed rgb(165, 161, 161) 1px;
+  padding: 5px;
+}
+.drop-img-content:hover {
+  border-color: black;
+}
+.fas {
+  font-size: 44px;
+  color: rgb(165, 161, 161);
+}
+.fas:hover {
+  color: black;
+}
 /* Estilo genéricos */
 .show {
   display: block;
