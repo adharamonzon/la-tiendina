@@ -3,7 +3,7 @@ let cartProducts = [];
 
 //traemos información del .json
 const getData = () => {
- return fetch('../js/data/data.json')
+ return fetch('./js/data/data.json')
 .then(response => response.json())
 .then(data => {
    vegetables = data;
