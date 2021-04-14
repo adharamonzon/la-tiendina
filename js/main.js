@@ -269,6 +269,17 @@ const handleBuy = () => {
 }
 buy.addEventListener('click', handleBuy);
 
+//drag and drop events
+const dropZone = document.querySelector('.drop-section');
+let dragItem = document.querySelectorAll('.vegetables-item');
+
+const handleDrag = (ev) => {
+  console.log(ev, item);
+}
+
+dragItem.forEach((item) => item.addEventListener('ondrag', handleDrag))
+
+
 //ejecución de eventos
 getData();
 paintCartItems();
