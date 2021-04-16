@@ -17,17 +17,17 @@ const paintGroceries = () => {
  let listCode = ''; 
  for (vegetable of vegetables) {
    if (vegetable.family === "verduras"){
-   listCode += `<li id=${vegetable.id} data-bs-toggle="modal" data-bs-target="#exampleModal" data-id=${vegetable.id} class="vegetables-item">`;
+   listCode += `<li id=${vegetable.id} data-bs-toggle="modal" data-bs-target="#exampleModal" data-id=${vegetable.id} class="vegetables-item js-listItem">`;
    listCode += '<div class="image-content">'
-   listCode += `<img class="vegetables-img" src=${vegetable.url} />`;
+   listCode += `<img class="vegetables-img" src=${vegetable.url} id=${vegetable.id} />`;
    listCode += '</div>'
    listCode += `<h6 class="vegetables-name">${vegetable.name}</h6>`;
    listCode += `<p class="vegetables-price">${vegetable.price}€ /Kg </p>`;
    listCode += `</li>`;
  } else if (vegetable.family === "frutas"){
-  listCode += `<li data-bs-toggle="modal" data-bs-target="#exampleModal" id=${vegetable.id} data-id=${vegetable.id} class="vegetables-item">`;
+  listCode += `<li data-bs-toggle="modal" data-bs-target="#exampleModal" id=${vegetable.id} data-id=${vegetable.id} class="vegetables-item js-listItem">`;
   listCode += '<div class="image-content">'
-  listCode += `<img class="vegetables-img" src=${vegetable.url} />`;
+  listCode += `<img class="vegetables-img" src=${vegetable.url} id=${vegetable.id} />`;
   listCode += '</div>'
   listCode += `<h6 class="vegetables-name">${vegetable.name}</h6>`;
   listCode += `<p class="vegetables-price">${vegetable.price}€ /Kg </p>`;;
@@ -36,6 +36,7 @@ const paintGroceries = () => {
 }
 vegetablesList.innerHTML = listCode;
 showModal();
+dragEvent();
 }
 
 //ventana modal de cada producto
@@ -271,13 +272,22 @@ buy.addEventListener('click', handleBuy);
 
 //drag and drop events
 const dropZone = document.querySelector('.drop-section');
-let dragItem = document.querySelectorAll('.vegetables-item');
 
-const handleDrag = (ev) => {
-  console.log(ev, item);
+const dragEvent = (ev) => {
+  let dragItem = document.querySelectorAll('.js-listItem');
+  let selectedProductId;
+  const handleDrag = (ev) => {
+    selectedProductId = ev.target.id;
+    const handleDrop = (ev) => {
+      console.log(ev, selectedProductId);
+    }
+    dropZone.addEventListener('dragover', handleDrop)
+  }
+  
+  dragItem.forEach((item) => item.addEventListener('dragstart', handleDrag))
+
 }
 
-dragItem.forEach((item) => item.addEventListener('ondrag', handleDrag))
 
 
 //ejecución de eventos
