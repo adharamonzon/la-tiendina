@@ -3,32 +3,32 @@
 }
 /* ESTILOS DEL HEADER */
 .header-title {
-  font-size: 50px;
+  font-size: 3.12rem;
   text-align: center;
-  margin-top: 40px;
+  margin-top: 2.5rem;
 }
 .header-subtitle {
   text-align: center;
 }
 .header-basket {
-  width: 50px;
-  height: 50px;
+  width: 3.12rem;
+  height: 3.12rem;
   position: absolute;
-  top: 40px;
-  right: 40px;
+  top: 2.5rem;
+  right: 2.5rem;
   cursor: pointer;
 }
 .number {
   display: none;
   text-align: center;
-  width: 16px;
+  width: 1rem;
   border-radius: 50%;
-  font-size: 10px;
-  border: solid black 1px;
-  padding: 2px;
+  font-size: 0.62rem;
+  border: solid black 0.06rem;
+  padding: 0.12rem;
   position: absolute;
-  bottom: 32px;
-  right: -3px;
+  bottom: 2rem;
+  right: -0.18rem;
   font-weight: bold;
   background-color: white;
 }
@@ -44,7 +44,7 @@
   width: 75%;
 }
 .section-title {
-  margin: 20px;
+  margin: 1.25rem;
 }
 .vegetables-list {
   list-style: none;
@@ -55,76 +55,76 @@
   justify-items: center;
 }
 .vegetables-item {
-  padding: 5px;
-  margin-top: 5px;
-  width: 190px;
-  height: 180px;
+  padding: 0.31rem;
+  margin-top: 0.31rem;
+  width: 11.87rem;
+  height: 11.25rem;
   align-content: center;
   cursor: pointer;
 }
 .vegetables-item:hover {
-  border: solid black 1px;
-  border-radius: 5px;
+  border: solid black 0.06rem;
+  border-radius: 0.31rem;
 }
 .image-content {
-  width: 140px;
+  width: 8.75rem;
 }
 .vegetables-img {
-  width: 160px;
-  height: 120px;
+  width: 10rem;
+  height: 7.5rem;
 }
 .vegetables-name {
-  font-size: 14px;
-  margin-top: 10px;
+  font-size: 0.87rem;
+  margin-top: 0.62rem;
 }
 .vegetables-title {
-  font-size: 24px;
-  margin: 20px;
+  font-size: 1.5rem;
+  margin: 1.25rem;
 }
 .vegetables-price {
-  font-size: 12px;
+  font-size: 0.75rem;
 }
 /* ESTILOS DE LA VENTANA MODAL */
 .modal-content {
   width: 80%;
-  margin-top: 200px;
+  margin-top: 12.5rem;
 }
 .modal-title {
-  font-size: 24px;
+  font-size: 1.5rem;
 }
 .modal-body {
   align-self: center;
 }
 .modal-img {
-  height: 200px;
+  height: 12.5rem;
   width: auto;
 }
 .modal-description {
-  margin-left: 5px;
+  margin-left: 0.31rem;
 }
 .modal-footer {
   justify-content: flex-start;
 }
 .cart-icon {
-  width: 12px;
+  width: 0.75rem;
 }
 /* ESTILOS CARRITO DE LA COMPRA */
 .cart {
   width: 25%;
-  margin-right: 40px;
+  margin-right: 2.5rem;
 }
 .cart-header {
   display: flex;
 }
 .cart-title {
-  margin: 20px;
+  margin: 1.25rem;
 }
 .icon {
-  width: 40px;
+  width: 2.5rem;
 }
 .btn-cart {
-  height: 20px;
-  width: 15px;
+  height: 1.25rem;
+  width: 0.93rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -132,10 +132,10 @@
 .quantity {
   display: flex;
   justify-content: space-evenly;
-  margin-top: 1px;
+  margin-top: 0.06rem;
 }
 .trash-icon {
-  width: 20px;
+  width: 1.25rem;
   cursor: pointer;
 }
 .price-text {
@@ -147,19 +147,19 @@
 }
 /* ESTILOS DEL DRAG AND DROP */
 .cart-drag-drop {
-  margin: 20px;
+  margin: 1.25rem;
 }
 .drop-section {
-  height: 150px;
-  border: dashed red 1px;
+  height: 9.37rem;
+  border: dashed red 0.06rem;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
 }
 .drop-img-content {
-  border: dashed rgb(165, 161, 161) 1px;
-  padding: 5px;
+  border: dashed rgb(165, 161, 161) 0.06rem;
+  padding: 0.31rem;
 }
 .drop-img-content:hover {
   border-color: black;
