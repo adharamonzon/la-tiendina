@@ -17,7 +17,7 @@ const paintGroceries = () => {
  let listCode = ''; 
  for (vegetable of vegetables) {
    if (vegetable.family === "verduras"){
-   listCode += `<li id=${vegetable.id} data-bs-toggle="modal" data-bs-target="#exampleModal" data-id=${vegetable.id} class="vegetables-item js-listItem">`;
+   listCode += `<li id=${vegetable.id} data-bs-toggle="modal" data-bs-target="#exampleModal" class="vegetables-item js-listItem"  draggable="true">`;
    listCode += '<div class="image-content">'
    listCode += `<img class="vegetables-img" src=${vegetable.url} id=${vegetable.id} />`;
    listCode += '</div>'
@@ -25,7 +25,7 @@ const paintGroceries = () => {
    listCode += `<p class="vegetables-price">${vegetable.price}€ /Kg </p>`;
    listCode += `</li>`;
  } else if (vegetable.family === "frutas"){
-  listCode += `<li data-bs-toggle="modal" data-bs-target="#exampleModal" id=${vegetable.id} data-id=${vegetable.id} class="vegetables-item js-listItem">`;
+  listCode += `<li data-bs-toggle="modal" data-bs-target="#exampleModal" id=${vegetable.id} class="vegetables-item js-listItem"  draggable="true">`;
   listCode += '<div class="image-content">'
   listCode += `<img class="vegetables-img" src=${vegetable.url} id=${vegetable.id} />`;
   listCode += '</div>'
@@ -148,8 +148,8 @@ const handleAddProduct = () => {
       } else {
         foundItem.quantity +=1;
       }
-    paintCartItems();/* 
-    paintCartNumber(foundItem); */
+    paintCartItems();
+    paintCartNumber(foundItem); 
     
   }
   addBtn.addEventListener('click', addProduct)  
@@ -178,17 +178,16 @@ const handleDeleteProduct = () => {
         }
       }
       
-    paintCartItems();/* 
-    paintCartNumber(foundItem); */
+    paintCartItems();
   }
   deleteBtn.addEventListener('click', deleteProduct);
 }
 
 //Pintar el número de productos en la venta modal
-/* const paintCartNumber = (foundItem) => {
+const paintCartNumber = (foundItem) => {
   const modalNumber = document.querySelector('.js-modal-number');
   return modalNumber.innerHTML = foundItem.quantity;
-  } */
+  } 
 
 //f(x) añadir productos desde el carrito
 const addCartProduct = (ev) => {
@@ -273,23 +272,47 @@ buy.addEventListener('click', handleBuy);
 //drag and drop events
 const dropZone = document.querySelector('.drop-section');
 
+
 const dragEvent = (ev) => {
   let dragItem = document.querySelectorAll('.js-listItem');
-  let selectedProductId;
-  const handleDrag = (ev) => {
-    selectedProductId = ev.target.id;
-    const handleDrop = (ev) => {
-      console.log(ev, selectedProductId);
+  let myProduct;
+  const addProduct = (ev) => {
+    console.log(ev);
+    let foundItem;
+    for (const item of cartProducts) {
+      if (item.id === ev){
+        foundItem = item;
+      }
     }
-    dropZone.addEventListener('dragover', handleDrop)
+    let foundProduct;
+      if (foundItem === undefined){
+        for (const product of vegetables) {
+         if (product.id === ev){
+           foundProduct = product;
+          }
+        }
+       cartProducts.push(foundProduct)
+      } else {
+        foundItem.quantity +=1;
+      }
+    paintCartItems();
   }
-  
+  const handleDrag = (ev) => {
+   myProduct = ev.dataTransfer.setData('text', ev.target.id)
+  }
+  const dragOver = (ev) => {
+    ev.preventDefault();
+  }
+  const dropProduct = (ev) => {
+    ev.preventDefault();
+    let id = ev.dataTransfer.getData('text');
+    let product = myProduct;
+    addProduct(id, product);
+  }
   dragItem.forEach((item) => item.addEventListener('dragstart', handleDrag))
-
+  dropZone.addEventListener('dragover', dragOver);
+  dropZone.addEventListener('drop', dropProduct);
 }
-
-
-
 //ejecución de eventos
 getData();
 paintCartItems();
