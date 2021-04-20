@@ -97,8 +97,8 @@ const getCartItemHtmlCode = item => {
 const getCartTotalHtmlCode = () => {
   let cartCodeTotal = '';
   cartCodeTotal += `<tr class="cart-total">`;
-  cartCodeTotal += `<td>Total</td>`;
-  cartCodeTotal += `<td>${getTotalPrice()}€</td>`;
+  cartCodeTotal += `<td class="total-line">Total</td>`;
+  cartCodeTotal += `<td class="total-line">${getTotalPrice()}€</td>`;
   cartCodeTotal += `</tr>`;
   return cartCodeTotal;
 }

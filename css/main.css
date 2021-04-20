@@ -33,18 +33,19 @@
   background-color: white;
 }
 .carousel-inner {
-  height: 70vh !important;
+  height: 70vh;
+  width: 100%;
   background: no-repeat center;
 }
 /* ESTILOS DE LA SECCIÓN DE PRODUCTOS (LISTADO) */
 .main {
   display: flex;
 }
+.main-title {
+  margin-top: 1rem;
+}
 .ourProducts {
   width: 75%;
-}
-.section-title {
-  margin: 1.25rem;
 }
 .vegetables-list {
   list-style: none;
@@ -112,6 +113,8 @@
 .cart {
   width: 25%;
   margin-right: 2.5rem;
+  overflow: visible;
+  padding-bottom: 5.62rem;
 }
 .cart-header {
   display: flex;
@@ -145,12 +148,15 @@
 .cart-total {
   font-weight: bolder;
 }
+.total-line {
+  text-align: right;
+}
 /* ESTILOS DEL DRAG AND DROP */
 .cart-drag-drop {
   margin: 1.25rem;
 }
 .drop-section {
-  height: 9.37rem;
+  height: 7.37rem;
   border: dashed red 0.06rem;
   display: flex;
   justify-content: center;
@@ -170,6 +176,35 @@
 }
 .fas:hover {
   color: black;
+}
+/* MEDIA QUERY */
+@media (max-width: 1070px) {
+  .vegetables-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .carrousel {
+    height: 40vh;
+  }
+}
+@media (max-width: 950px) {
+  .main {
+    flex-direction: column;
+  }
+  .cart {
+    align-self: center;
+    width: 50%;
+  }
+  .carousel-inner {
+    height: 40vh;
+  }
+}
+@media (max-width: 600px) {
+  .header-title {
+    font-size: 2.43rem;
+  }
+  .carousel-inner {
+    margin-left: 15%;
+  }
 }
 /* Estilo genéricos */
 .show {
