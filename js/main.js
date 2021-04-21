@@ -57,8 +57,8 @@ const showModal = () => {
         modalCard += `<p class="modal-description">${item.description}</p>`;
         modalCard += '</div>';
         modalCard += '<div class="modal-footer">'
-        modalCard += `<button type="button" class="btn btn-outline-secondary minusBtn" id=${item.id}><img class="cart-icon" src="../../css/icons/menos.svg" alt="Quitar uno de la lista"/></button>`
-        modalCard += `<button type="button" class="btn btn-outline-secondary plusBtn" id=${item.id}><img class="cart-icon" src="../../css/icons/mas.svg" alt="Añadir uno a la lista"/></button>`;
+        modalCard += `<button type="button" class="btn btn-outline-secondary minusBtn" id=${item.id}><img class="cart-icon" src="../css/icons/menos.svg" alt="Quitar uno de la lista"/></button>`
+        modalCard += `<button type="button" class="btn btn-outline-secondary plusBtn" id=${item.id}><img class="cart-icon" src="../css/icons/mas.svg" alt="Añadir uno a la lista"/></button>`;
         modalCard += `</div>`;
         modalCard += `</div>`;
       }
