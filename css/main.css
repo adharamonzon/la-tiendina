@@ -177,6 +177,31 @@
 .fas:hover {
   color: black;
 }
+/* Footer */
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(19, 172, 19);
+  width: 100%;
+  height: 7.5rem;
+}
+.fas {
+  color: black;
+  font-size: 1rem;
+}
+.footer-logo {
+  width: 3.5rem;
+  height: 3.5rem;
+  margin-bottom: 0.25rem;
+}
+.footer-small {
+  color: black;
+  font-size: 0.75rem;
+  font-weight: 450;
+  margin-bottom: 2px;
+}
 /* MEDIA QUERY */
 @media (max-width: 1070px) {
   .vegetables-list {
