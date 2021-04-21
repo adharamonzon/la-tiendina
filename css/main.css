@@ -231,6 +231,48 @@
     margin-left: 15%;
   }
 }
+@media (max-width: 400px) {
+  .header-title {
+    font-size: 2.43rem;
+    margin-left: 37px;
+  }
+  .carousel-inner {
+    height: 30vh;
+  }
+  .section-title {
+    font-size: 1.2rem;
+  }
+  .vegetables-title {
+    font-size: 1rem;
+    margin: 0;
+  }
+  .vegetables-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .cart-title {
+    font-size: 1.1rem;
+  }
+  .icon {
+    width: 1.5rem;
+  }
+  .cart {
+    width: 100%;
+    position: relative;
+    left: 50px;
+  }
+  .cart-subtitle {
+    font-size: 1.1rem;
+    width: 290px;
+    margin-top: -20px;
+  }
+  .drop-section {
+    height: 5.37rem;
+    margin-left: 20px;
+  }
+  .footer {
+    width: 138vw;
+  }
+}
 /* Estilo genéricos */
 .show {
   display: block;
