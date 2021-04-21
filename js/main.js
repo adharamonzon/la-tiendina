@@ -58,7 +58,6 @@ const showModal = () => {
         modalCard += '</div>';
         modalCard += '<div class="modal-footer">'
         modalCard += `<button type="button" class="btn btn-outline-secondary minusBtn" id=${item.id}><img class="cart-icon" src="../css/icons/menos.svg" alt="Quitar uno de la lista"/></button>`
-        modalCard += `<p class="js-modal-number">${item.quantity}<p>`;
         modalCard += `<button type="button" class="btn btn-outline-secondary plusBtn" id=${item.id}><img class="cart-icon" src="../css/icons/mas.svg" alt="Añadir uno a la lista"/></button>`;
         modalCard += `</div>`;
         modalCard += `</div>`;
@@ -265,13 +264,16 @@ const listenTrashBtns = () => {
 //evento de comprar
 const buy = document.querySelector('.js-buyIt');
 const handleBuy = () => {
-  alert('Enhorabuena por la compra')
+  if (cartProducts.length > 0 ){
+    alert('Gracias por su compra.')
+  } else{
+    alert('Su cesta está vacía.')
+  }
 }
 buy.addEventListener('click', handleBuy);
 
 //drag and drop events
 const dropZone = document.querySelector('.drop-section');
-
 
 const dragEvent = (ev) => {
   let dragItem = document.querySelectorAll('.js-listItem');
