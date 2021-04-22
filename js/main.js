@@ -57,9 +57,8 @@ const showModal = () => {
         modalCard += `<p class="modal-description">${item.description}</p>`;
         modalCard += '</div>';
         modalCard += '<div class="modal-footer">'
-        modalCard += `<button type="button" class="btn btn-outline-secondary minusBtn" id=${item.id}><img class="cart-icon" src="../css/icons/menos.svg" alt="Quitar uno de la lista"/></button>`
-        modalCard += `<button type="button" class="btn btn-outline-secondary plusBtn" id=${item.id}><img class="cart-icon" src="../css/icons/mas.svg" alt="Añadir uno a la lista"/></button>`;
-        modalCard += `</div>`;
+        modalCard += `<button type="button" class="btn btn-outline-secondary minusBtn" id=${item.id}><i class="fas fa-minus"></i></button>`
+        modalCard += `<button type="button" class="btn btn-outline-secondary plusBtn" id=${item.id}><i class="fas fa-plus"></i></button>`;
         modalCard += `</div>`;
       }
     }
@@ -148,7 +147,6 @@ const handleAddProduct = () => {
         foundItem.quantity +=1;
       }
     paintCartItems();
-    paintCartNumber(foundItem); 
     
   }
   addBtn.addEventListener('click', addProduct)  
@@ -181,12 +179,6 @@ const handleDeleteProduct = () => {
   }
   deleteBtn.addEventListener('click', deleteProduct);
 }
-
-//Pintar el número de productos en la venta modal
-const paintCartNumber = (foundItem) => {
-  const modalNumber = document.querySelector('.js-modal-number');
-  return modalNumber.innerHTML = foundItem.quantity;
-  } 
 
 //f(x) añadir productos desde el carrito
 const addCartProduct = (ev) => {
