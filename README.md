@@ -15,4 +15,9 @@ Se ha utilizado Git y el uso de ramas, para facilitar el desarrollo del trabajo.
 ## Instalación del proyecto :rocket:
 
 Puedes clonarte este repositorio, a través de este enlace, poniendo en la consola **git clone https://github.com/adharamonzon/showcase.git** y ya tendrás instalado este repo en local.
-También puedes visitar el resultado final a través de este enlace: **https://adharamonzon.github.io/showcase/**
+
+## Este es parte del resultado!
+
+Para ver toda la aplicación pincha en este enlace: **https://adharamonzon.github.io/showcase/**
+
+![Imagen de La Tiendina](./css/images/screenshot.png)
