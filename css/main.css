@@ -263,10 +263,11 @@
 @media (max-width: 400px) {
   .header-title {
     font-size: 2.43rem;
-    margin-left: 37px;
+    margin-left: 35px;
   }
   .carousel-inner {
     height: 30vh;
+    width: 120vw;
   }
   .section-title {
     font-size: 1.2rem;
@@ -277,7 +278,7 @@
   }
   .vegetables-list {
     grid-template-columns: repeat(2, 1fr);
-    margin-left: 35px;
+    margin-left: -5px;
   }
   .cart-title {
     font-size: 1.1rem;
