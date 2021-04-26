@@ -20,4 +20,4 @@ Puedes clonarte este repositorio, a través de este enlace, poniendo en la conso
 
 Para ver toda la aplicación pincha en este enlace: **https://adharamonzon.github.io/showcase/**
 
-![Imagen de La Tiendina](./css/images/screenshot.png)
+![Imagen de La Tiendina](./css/images/screenshot.jpg)
