@@ -6,6 +6,8 @@
   font-size: 3.12rem;
   text-align: center;
   margin-top: 2.5rem;
+  color: black;
+  text-decoration: overline rgb(19, 172, 19);
 }
 .header-subtitle {
   text-align: center;
@@ -135,7 +137,10 @@
 .quantity {
   display: flex;
   justify-content: space-evenly;
-  margin-top: 0.06rem;
+  padding-top: 0.45rem;
+}
+.cart-quantityNumber {
+  padding: 0px 3px;
 }
 .trash-icon {
   width: 1.25rem;
@@ -150,6 +155,9 @@
 }
 .total-line {
   text-align: right;
+}
+.table-line {
+  border: transparent;
 }
 /* ESTILOS DEL DRAG AND DROP */
 .cart-drag-drop {
@@ -210,6 +218,17 @@
   .carrousel {
     height: 40vh;
   }
+  .table {
+    width: 260px;
+    font-size: 12px;
+    border: none;
+  }
+  .cart-subtitle {
+    font-size: 1rem;
+  }
+  .quantity {
+    margin: 0;
+  }
 }
 @media (max-width: 950px) {
   .main {
@@ -217,7 +236,10 @@
   }
   .cart {
     align-self: center;
-    width: 50%;
+    width: 80%;
+  }
+  .table {
+    width: 100%;
   }
   .carousel-inner {
     height: 40vh;
@@ -226,9 +248,16 @@
 @media (max-width: 600px) {
   .header-title {
     font-size: 2.43rem;
+    text-align: center;
   }
   .carousel-inner {
-    margin-left: 15%;
+    margin-left: 13%;
+  }
+  .vegetables-list {
+    margin-left: -45px;
+  }
+  .cart {
+    width: 80%;
   }
 }
 @media (max-width: 400px) {
@@ -248,6 +277,7 @@
   }
   .vegetables-list {
     grid-template-columns: repeat(2, 1fr);
+    margin-left: 35px;
   }
   .cart-title {
     font-size: 1.1rem;
@@ -258,7 +288,7 @@
   .cart {
     width: 100%;
     position: relative;
-    left: 50px;
+    left: 70px;
   }
   .cart-subtitle {
     font-size: 1.1rem;
